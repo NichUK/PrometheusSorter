@@ -14,8 +14,9 @@ node app.js http://prometheus.url/api/v1
 then add:
 
 orderby(label) to sort alphabetically or 
+orderby(d(label)) to sort alphabetically descending
 orderby(num(label)) to sort numerically to the end of a Prometheus query
-
+orderby(numd(label)) to sort numerically descending
 
 Use or abuse this application for whatever purposes you like, business or
 pleasure, but any problems you may encounter are entirely your own problem.

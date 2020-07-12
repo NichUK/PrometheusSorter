@@ -112,11 +112,12 @@ function PassThru(req, res, url, orderBy) {
                 const orderBySplitRegex = /([^,]+)/g
                 var orderBySplit = orderBySplitRegex.exec(orderBy);
                 var orderFuncArray = [];
+                var orderSortArray = [];
                 for (var i = 1; i < orderBySplit.length; i++) {
                     var value = orderBySplit[i];
                     const orderFieldSplitRegex = /(num)?(\(*)([^,)]+)\)*/ // group[1]==function name, group[2]=='(' or nothing, group[3]==field
                     var orderFieldSplit = orderFieldSplitRegex.exec(value);
-                    orderFuncArray.push(CreateOrderField(orderFieldSplit[1], orderFieldSplit[2], orderFieldSplit[3]));
+                    CreateOrderField(orderFieldSplit[1], orderFieldSplit[2], orderFieldSplit[3], orderFuncArray, orderSortArray);
                 }
 
                 jsonResult = _.sortBy(jsonResult, orderFuncArray);
@@ -128,25 +129,26 @@ function PassThru(req, res, url, orderBy) {
     });
 }
 
-function CreateOrderField(functionName, functionPresentFlag, value) {
+function CreateOrderField(functionName, functionPresentFlag, value, orderFuncArray, orderSortArray) {
     if (functionPresentFlag) {
         switch (functionName) {
+            case 'd':
+                orderFuncArray.push(o => o.metric[value]);
+                orderSortArray.push('desc');
+                break;
             case 'num':
-                return o => Number(o.metric[value]);
+                orderFuncArray.push(o => Number(o.metric[value]));
+                orderSortArray.push('asc');
+                break;
+            case 'numd':
+                orderFuncArray.push(o => Number(o.metric[value]));
+                orderSortArray.push('desc');
                 break;
         }
+    } else {
+        orderFuncArray.push(o => o.metric[value]);
+        orderSortArray.push('asc');
     }
-
-    return o => o[field];
-
-    //if (orderBy.startsWith('num(')) {
-    //    var field = orderBy.substr(4, orderBy.length - 4 - 1);
-    //    jsonResult = _.sortBy(jsonResult, o => {
-    //        return Number(o.metric[field])
-    //    });
-    //} else {
-    //    jsonResult = _.sortBy(jsonResult);
-    //}
 }
 
 module.exports = router;
