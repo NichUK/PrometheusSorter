@@ -103,6 +103,10 @@ function PassThru(req, res, url, orderBy) {
         // The whole response has been received. Print out the result.
         response.on('end', () => {
             var json = JSON.parse(data);
+            if (!json.data) {
+                res.json(json);
+            }
+
             var jsonResult = json.data.result;
             if (orderBy) {
                 const orderBySplitRegex = /([^,]+)/g
