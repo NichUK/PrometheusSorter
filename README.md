@@ -1,27 +1,28 @@
 # PrometheusSorter
 
-This little Node/Express app attempts to bridge the annoying gap
+<p>This little Node/Express app attempts to bridge the annoying gap
 between Prometheus who believe that sorting should be the domain
 of the display layer, and Grafana who believe that sorting should
-be done by the data layer.
+be done by the data layer.</p>
 
-Maybe one day of them will JFDI and this app will can be retired for good!
+<p>Maybe one day of them will JFDI and this app will can be retired for good!</p>
 
-Usage:
+<p>Usage:<br/>
+<br/>
+node app.js http://prometheus.url/api/v1<br/>
+<br/>
+then add:<br/>
+<br/>
+orderby(label) to sort alphabetically or <br/>
+orderby(d(label)) to sort alphabetically descending<br/>
+orderby(num(label)) to sort numerically to the end of a Prometheus query<br/>
+orderby(numd(label)) to sort numerically descending<br/>
+</p>
 
-node app.js http://prometheus.url/api/v1
+<p>Use or abuse this application for whatever purposes you like, business or
+pleasure, but any problems you may encounter are entirely your own problem.</p>
 
-then add:
+<p>Pull requests welcome if you find a problem, or have a cool extension or deployment.</p>
 
-orderby(label) to sort alphabetically or 
-orderby(d(label)) to sort alphabetically descending
-orderby(num(label)) to sort numerically to the end of a Prometheus query
-orderby(numd(label)) to sort numerically descending
-
-Use or abuse this application for whatever purposes you like, business or
-pleasure, but any problems you may encounter are entirely your own problem.
-
-Pull requests welcome if you find a problem, or have a cool extension or deployment.
-
-Nich
-nich@nixnet.com
+<p>Nich<br/>
+nich@nixnet.com</p>
