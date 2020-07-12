@@ -4,7 +4,11 @@ var http = require('http');
 var _ = require('lodash');
 var router = express.Router();
 
-var prometheusUrl = 'http://prometheus1.oticapital.co.uk:9090/api/v1';
+var prometheusUrl = process.argv.length > 2 ? process.argv[2] : '';
+if (!prometheusUrl) {
+    console.error('Requires prometheus url');
+    return;
+}
 
 router.get('/query', function (req, res) {
     DoQuery(req, res);
