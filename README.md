@@ -7,6 +7,12 @@ be done by the data layer.
 
 Maybe one day of them will JFDI and this app will can be retired for good!
 
+Usage:
+
+orderby(label) to sort alphabetically or 
+orderby(num(label)) to sort numerically to the end of a Prometheus query
+
+
 Use or abuse this application for whatever purposes you like, business or
 pleasure, but any problems you may encounter are entirely your own problem.
 
