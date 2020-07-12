@@ -9,6 +9,10 @@ Maybe one day of them will JFDI and this app will can be retired for good!
 
 Usage:
 
+node app.js http://prometheus.url/api/v1
+
+then add:
+
 orderby(label) to sort alphabetically or 
 orderby(num(label)) to sort numerically to the end of a Prometheus query
 
