@@ -22,7 +22,9 @@ orderby(numd(label)) to sort numerically descending<br/>
 <p>Use or abuse this application for whatever purposes you like, business or
 pleasure, but any problems you may encounter are entirely your own problem.</p>
 
-<p>Pull requests welcome if you find a problem, or have a cool extension or deployment.</p>
+<p>Pull requests welcome if you find a problem, or have a cool extension or deployment.
+Also please excuse the everything, this is my first Node/Express app so I'm learning
+all the things.</p>
 
 <p>Nich<br/>
 nich@nixnet.com</p>
